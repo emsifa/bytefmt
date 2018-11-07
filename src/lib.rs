@@ -8,18 +8,18 @@ extern crate regex;
 
 use regex::Regex;
 
-pub const B: usize = 1;
-pub const KB: usize = 1_000;
-pub const MB: usize = 1_000_000;
-pub const GB: usize = 1_000_000_000;
-pub const TB: usize = 1_000_000_000_000;
-pub const PB: usize = 1_000_000_000_000_000;
+pub const B: u64 = 1;
+pub const KB: u64 = 1_000;
+pub const MB: u64 = 1_000_000;
+pub const GB: u64 = 1_000_000_000;
+pub const TB: u64 = 1_000_000_000_000;
+pub const PB: u64 = 1_000_000_000_000_000;
 
-pub const KIB: usize = 1_024;
-pub const MIB: usize = 1_048_576;
-pub const GIB: usize = 1_073_741_824;
-pub const TIB: usize = 1_099_511_627_776;
-pub const PIB: usize = 1_125_899_906_842_624;
+pub const KIB: u64 = 1_024;
+pub const MIB: u64 = 1_048_576;
+pub const GIB: u64 = 1_073_741_824;
+pub const TIB: u64 = 1_099_511_627_776;
+pub const PIB: u64 = 1_125_899_906_842_624;
 
 #[derive(Debug,PartialEq)]
 pub enum Unit {
@@ -86,7 +86,7 @@ fn parse_size_unit<S: Into<String>>(s: S) -> Result<(f64, Unit), &'static str> {
 /// assert_eq!(byteunit::parse("1.23 TiB").unwrap(), 1_352_399_302_164);
 /// assert_eq!(byteunit::parse("1.23 PiB").unwrap(), 1_384_856_885_416_427);
 /// ```
-pub fn parse<S: Into<String>>(str: S) -> Result<usize, &'static str> {
+pub fn parse<S: Into<String>>(str: S) -> Result<u64, &'static str> {
     let parsed = parse_size_unit(str);
 
     match parsed {
@@ -108,7 +108,7 @@ pub fn parse<S: Into<String>>(str: S) -> Result<usize, &'static str> {
                 Unit::PIB => value * PIB as f64,
             };
 
-            Ok(bytes as usize)
+            Ok(bytes as u64)
         },
         Err(msg) => Err(msg),
     }
@@ -160,7 +160,7 @@ pub fn parse_to<S: Into<String>>(str: S, result_unit: Unit) -> Result<f64, &'sta
 /// assert_eq!(byteunit::format(1_230_000_000_000), "1.23 TB");
 /// assert_eq!(byteunit::format(1_230_000_000_000_000), "1.23 PB");
 /// ```
-pub fn format(bytes: usize) -> String {
+pub fn format(bytes: u64) -> String {
     if bytes < KB {
         return format_to(bytes, Unit::B);
     }
@@ -194,7 +194,7 @@ pub fn format(bytes: usize) -> String {
 /// assert_eq!(byteunit::format_to(500, byteunit::Unit::KB), "0.5 KB");
 /// assert_eq!(byteunit::format_to(512, byteunit::Unit::KIB), "0.5 KiB");
 /// ```
-pub fn format_to(bytes: usize, unit: Unit) -> String {
+pub fn format_to(bytes: u64, unit: Unit) -> String {
     let result = match unit {
         Unit::B => bytes as f64,
         Unit::KB => bytes as f64 / KB as f64,
@@ -359,5 +359,26 @@ mod tests {
         assert_eq!(format_to(536_870_912, Unit::GIB), "0.5 GiB");
         assert_eq!(format_to(549_755_813_888, Unit::TIB), "0.5 TiB");
         assert_eq!(format_to(562_949_953_421_312, Unit::PIB), "0.5 PiB");
+    }
+
+    #[test]
+    fn test_readme() {
+        let input = "1.23 MB";
+
+        // Parse string into bytes
+        let bytes: u64 = parse(input).unwrap();
+        assert_eq!(bytes, 1_230_000);
+
+        // Format bytes into string
+        let bytes_str = format(bytes);
+        assert_eq!(&bytes_str, input);
+
+        // Parse to specific unit
+        let kb: f64 = parse_to(input, Unit::KB).unwrap();
+        assert_eq!(kb, 1_230 as f64);
+
+        // Format to specific unit
+        let kb_str = format_to(bytes, Unit::KB);
+        assert_eq!(&kb_str, "1230 KB");
     }
 }
