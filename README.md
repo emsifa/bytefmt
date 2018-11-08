@@ -1,7 +1,9 @@
 Bytefmt
 ============
 
-Bytefmt is rust utilities to parse byte string into bytes count and format bytes count back into string.
+[![Build Status](https://travis-ci.org/emsifa/bytefmt.svg?branch=master)](https://travis-ci.org/emsifa/bytefmt)
+
+Bytefmt is Rust utility to parse byte string into bytes count and vice versa.
 
 ## Installation
 

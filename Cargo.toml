@@ -1,12 +1,13 @@
 [package]
 name = "bytefmt"
-description = "Bytefmt is Rust utility to parse byte string into bytes count and vice versa."
+description = "an utility to parse byte string into bytes count and vice versa."
 version = "0.1.2"
 authors = ["Muhammad Syifa <emsifa@gmail.com>"]
 license = "MIT"
+keywords = ["byte", "utility", "parse", "format"]
 homepage = "https://github.com/emsifa/bytefmt"
 repository = "https://github.com/emsifa/bytefmt"
-documentation = "https://github.com/emsifa/bytefmt"
+documentation = "https://docs.rs/bytefmt/"
 
 [dependencies]
 regex = "1"
