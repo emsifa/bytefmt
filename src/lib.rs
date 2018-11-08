@@ -1,6 +1,6 @@
-//! # Bytefmt
+//! # bytefmt
 //!
-//! Bytefmt is Rust utilities to parse string byte size into bytes count and vice versa.
+//! Bytefmt is Rust utility to parse byte string into bytes count and vice versa.
 //!
 //! ## Examples
 //!
@@ -92,7 +92,7 @@ fn parse_size_unit<S: Into<String>>(s: S) -> Result<(f64, Unit), &'static str> {
     }
 }
 
-/// Parse given string to bytes size
+/// Parse given string to bytes count
 ///
 /// # Examples  
 ///
@@ -172,7 +172,7 @@ pub fn parse_to<S: Into<String>>(str: S, result_unit: Unit) -> Result<f64, &'sta
     }
 }
 
-/// Format bytes to byte size string
+/// Format bytes to byte string
 ///
 /// # Examples
 ///
@@ -208,7 +208,7 @@ pub fn format(bytes: u64) -> String {
     format_to(bytes, Unit::PB)
 }
 
-/// Format bytes to specific unit byte size string
+/// Format bytes to specific unit byte string
 ///
 /// # Examples
 ///

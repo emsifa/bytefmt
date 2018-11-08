@@ -1,8 +1,9 @@
 bytefmt
 ============
 
-[![Build Status](https://travis-ci.org/emsifa/bytefmt.svg?branch=master)](https://travis-ci.org/emsifa/bytefmt)
-[![Crates.io Version](https://img.shields.io/crates/v/bytefmt.svg)](https://crates.io/crates/bytefmt)
+[![bytefmt on travis](https://travis-ci.org/emsifa/bytefmt.svg?branch=master)](https://travis-ci.org/emsifa/bytefmt)
+[![bytefmt on crates.io](https://img.shields.io/crates/v/bytefmt.svg)](https://crates.io/crates/bytefmt)
+[![bytefmt on docs.rs](https://docs.rs/bytefmt/badge.svg)](https://docs.rs/bytefmt)
 
 Bytefmt is Rust utility to parse byte string into bytes count and vice versa.
 
@@ -12,7 +13,7 @@ Put `bytefmt` to your dependencies in `Cargo.toml` file:
 
 ```
 [dependencies]
-bytefmt = "0.1.6"
+bytefmt = "0.1.7"
 ```
 
 ## Usage Examples
