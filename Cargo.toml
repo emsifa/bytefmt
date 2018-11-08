@@ -4,6 +4,9 @@ description = "Bytefmt is Rust utility to parse byte string into bytes count and
 version = "0.1.1"
 authors = ["Muhammad Syifa <emsifa@gmail.com>"]
 license = "MIT"
+homepage = "https://github.com/emsifa/bytefmt"
+repository = "https://github.com/emsifa/bytefmt"
+documentation = "https://github.com/emsifa/bytefmt"
 
 [dependencies]
 regex = "1"
