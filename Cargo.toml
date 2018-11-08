@@ -4,6 +4,7 @@ description = "an utility to parse byte string into bytes count and vice versa."
 version = "0.1.3"
 authors = ["Muhammad Syifa <emsifa@gmail.com>"]
 license = "MIT"
+readme = "README.md"
 keywords = ["byte", "utility", "parse", "format"]
 homepage = "https://github.com/emsifa/bytefmt"
 repository = "https://github.com/emsifa/bytefmt"
