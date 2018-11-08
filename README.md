@@ -2,6 +2,7 @@ Bytefmt
 ============
 
 [![Build Status](https://travis-ci.org/emsifa/bytefmt.svg?branch=master)](https://travis-ci.org/emsifa/bytefmt)
+[![Crates.io Version](https://img.shields.io/crates/v/bytefmt.svg)](https://crates.io/crates/bytefmt)
 
 Bytefmt is Rust utility to parse byte string into bytes count and vice versa.
 
