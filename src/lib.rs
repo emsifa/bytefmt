@@ -1,6 +1,6 @@
-//! # Byteunit
+//! # Bytefmt
 //!
-//! Byteunit is Rust utilities to parse string byte size into bytes count, 
+//! Bytefmt is Rust utilities to parse string byte size into bytes count, 
 //! and format bytes count back to string.
 //!
 ////////////////////////////////////////////////////////////////////////////////
@@ -73,18 +73,18 @@ fn parse_size_unit<S: Into<String>>(s: S) -> Result<(f64, Unit), &'static str> {
 /// # Examples  
 ///
 /// ```
-/// assert_eq!(byteunit::parse("123").unwrap(), 123);
-/// assert_eq!(byteunit::parse("1.23 B").unwrap(), 1);
-/// assert_eq!(byteunit::parse("1.23 KB").unwrap(), 1_230);
-/// assert_eq!(byteunit::parse("1.23 MB").unwrap(), 1_230_000);
-/// assert_eq!(byteunit::parse("1.23 GB").unwrap(), 1_230_000_000);
-/// assert_eq!(byteunit::parse("1.23 TB").unwrap(), 1_230_000_000_000);
-/// assert_eq!(byteunit::parse("1.23 PB").unwrap(), 1_230_000_000_000_000);
-/// assert_eq!(byteunit::parse("1.23 KiB").unwrap(), 1_259);
-/// assert_eq!(byteunit::parse("1.23 MiB").unwrap(), 1_289_748);
-/// assert_eq!(byteunit::parse("1.23 GiB").unwrap(), 1_320_702_443);
-/// assert_eq!(byteunit::parse("1.23 TiB").unwrap(), 1_352_399_302_164);
-/// assert_eq!(byteunit::parse("1.23 PiB").unwrap(), 1_384_856_885_416_427);
+/// assert_eq!(bytefmt::parse("123").unwrap(), 123);
+/// assert_eq!(bytefmt::parse("1.23 B").unwrap(), 1);
+/// assert_eq!(bytefmt::parse("1.23 KB").unwrap(), 1_230);
+/// assert_eq!(bytefmt::parse("1.23 MB").unwrap(), 1_230_000);
+/// assert_eq!(bytefmt::parse("1.23 GB").unwrap(), 1_230_000_000);
+/// assert_eq!(bytefmt::parse("1.23 TB").unwrap(), 1_230_000_000_000);
+/// assert_eq!(bytefmt::parse("1.23 PB").unwrap(), 1_230_000_000_000_000);
+/// assert_eq!(bytefmt::parse("1.23 KiB").unwrap(), 1_259);
+/// assert_eq!(bytefmt::parse("1.23 MiB").unwrap(), 1_289_748);
+/// assert_eq!(bytefmt::parse("1.23 GiB").unwrap(), 1_320_702_443);
+/// assert_eq!(bytefmt::parse("1.23 TiB").unwrap(), 1_352_399_302_164);
+/// assert_eq!(bytefmt::parse("1.23 PiB").unwrap(), 1_384_856_885_416_427);
 /// ```
 pub fn parse<S: Into<String>>(str: S) -> Result<u64, &'static str> {
     let parsed = parse_size_unit(str);
@@ -119,8 +119,8 @@ pub fn parse<S: Into<String>>(str: S) -> Result<u64, &'static str> {
 /// # Examples  
 ///
 /// ```
-/// let kb = byteunit::parse_to("123B", byteunit::Unit::KB).unwrap();
-/// let mb = byteunit::parse_to("123B", byteunit::Unit::MB).unwrap();
+/// let kb = bytefmt::parse_to("123B", bytefmt::Unit::KB).unwrap();
+/// let mb = bytefmt::parse_to("123B", bytefmt::Unit::MB).unwrap();
 /// 
 /// assert_eq!(kb, 0.123);
 /// assert_eq!(mb, 0.000123);
@@ -153,12 +153,12 @@ pub fn parse_to<S: Into<String>>(str: S, result_unit: Unit) -> Result<f64, &'sta
 /// # Examples
 ///
 /// ```
-/// assert_eq!(byteunit::format(123), "123 B");
-/// assert_eq!(byteunit::format(1_230), "1.23 KB");
-/// assert_eq!(byteunit::format(1_230_000), "1.23 MB");
-/// assert_eq!(byteunit::format(1_230_000_000), "1.23 GB");
-/// assert_eq!(byteunit::format(1_230_000_000_000), "1.23 TB");
-/// assert_eq!(byteunit::format(1_230_000_000_000_000), "1.23 PB");
+/// assert_eq!(bytefmt::format(123), "123 B");
+/// assert_eq!(bytefmt::format(1_230), "1.23 KB");
+/// assert_eq!(bytefmt::format(1_230_000), "1.23 MB");
+/// assert_eq!(bytefmt::format(1_230_000_000), "1.23 GB");
+/// assert_eq!(bytefmt::format(1_230_000_000_000), "1.23 TB");
+/// assert_eq!(bytefmt::format(1_230_000_000_000_000), "1.23 PB");
 /// ```
 pub fn format(bytes: u64) -> String {
     if bytes < KB {
@@ -189,10 +189,10 @@ pub fn format(bytes: u64) -> String {
 /// # Examples
 ///
 /// ```
-/// assert_eq!(byteunit::format_to(1245, byteunit::Unit::KB), "1.25 KB");
-/// assert_eq!(byteunit::format_to(1275, byteunit::Unit::KIB), "1.25 KiB");
-/// assert_eq!(byteunit::format_to(500, byteunit::Unit::KB), "0.5 KB");
-/// assert_eq!(byteunit::format_to(512, byteunit::Unit::KIB), "0.5 KiB");
+/// assert_eq!(bytefmt::format_to(1245, bytefmt::Unit::KB), "1.25 KB");
+/// assert_eq!(bytefmt::format_to(1275, bytefmt::Unit::KIB), "1.25 KiB");
+/// assert_eq!(bytefmt::format_to(500, bytefmt::Unit::KB), "0.5 KB");
+/// assert_eq!(bytefmt::format_to(512, bytefmt::Unit::KIB), "0.5 KiB");
 /// ```
 pub fn format_to(bytes: u64, unit: Unit) -> String {
     let result = match unit {

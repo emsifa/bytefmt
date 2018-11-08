@@ -1,5 +1,5 @@
 [package]
-name = "byteunit"
+name = "bytefmt"
 version = "0.1.1"
 authors = ["Muhammad Syifa <emsifa@gmail.com>"]
 
