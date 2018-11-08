@@ -1,7 +1,9 @@
 [package]
 name = "bytefmt"
+description = "Bytefmt is Rust utility to parse byte string into bytes count and vice versa."
 version = "0.1.1"
 authors = ["Muhammad Syifa <emsifa@gmail.com>"]
+license = "MIT"
 
 [dependencies]
 regex = "1"
