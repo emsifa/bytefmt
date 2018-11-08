@@ -11,7 +11,7 @@ Put `bytefmt` to your dependencies in `Cargo.toml` file:
 
 ```
 [dependencies]
-bytefmt = "0.1.2"
+bytefmt = "0.1.3"
 ```
 
 ## Usage Examples
