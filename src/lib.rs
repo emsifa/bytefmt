@@ -4,10 +4,8 @@
 //!
 //! ## Examples
 //!
-//! ```ignore
+//! ```
 //! extern crate bytefmt;
-//!
-//! use bytefmt;
 //!
 //! fn main() {
 //!     let input = "1.23 MB";
