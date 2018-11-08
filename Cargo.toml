@@ -1,9 +1,9 @@
 [package]
 name = "bytefmt"
 description = "an utility to parse byte string into bytes count and vice versa."
-version = "0.1.5"
+version = "0.1.6"
 authors = ["Muhammad Syifa <emsifa@gmail.com>"]
-license = "MIT OR Apache-2.0"
+license = "MIT/Apache-2.0"
 readme = "README.md"
 keywords = ["byte", "utility", "parse", "format"]
 homepage = "https://github.com/emsifa/bytefmt"
